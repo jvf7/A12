@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body onload="checkCookie()">
+<script>
+    function setCookie(user, value) {
+        document.cookie = user + "=" + value + " ";
+    }
+
+    function getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for(let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
+    function checkCookie() {
+        let user = getCookie("username");
+        if (user != "") {
+            alert("Hi " + user + ". Welcome back!");
+        } else {
+            user = prompt("Hi there, please enter your name below:","");
+            if (user != "" && user != null) {
+                setCookie("username", user);
+            }
+        }
+    }
+</script>
+
+<h3> Welcome to my webpage. </h3>
+<p> It is currently under construction.</p>
+<img src="/images/comingsoon.jpeg" width="250" height="200">  <br> Sorry for the inconvenience :( </img>
+
+<p> Come back soon! </p>
+<br>
+
+<footer>
+    <p align="center">&copy; 2022, Jessica Fernandez</p>
+</footer>
+
+</body>
+</html>
